@@ -1,73 +1,41 @@
 import streamlit as st
 
-# Configuração visual da página
-st.set_page_config(page_title="Método de Desbanimento", page_icon="🛡️")
+st.set_page_config(page_title="FF Recupera - Método Estratégico", page_icon="🎮")
 
-# Cabeçalho Estratégico
-st.title("🛡️ Sistema de Recuperação Estratégica")
-st.markdown("---")
+st.title("🛡️ Recuperação de Conta Free Fire")
+st.subheader("Método Estratégico Anti-Ban")
 
-st.info("""
-**Protocolo de Recuperação:** Este sistema automatiza a estruturação de recursos técnicos, 
-substituindo termos emocionais por argumentos de conformidade para priorizar a análise humana.
-""")
+st.info("Este sistema gera recursos técnicos para a Garena, focados em revisão manual de ID suspenso por software de terceiros ou regedit.")
 
-# interface de Diagnóstico
-col1, col2 = st.columns(2)
-with col1:
-    plataforma = st.selectbox("Plataforma Alvo", ["Instagram", "Garena / Free Fire", "Google", "WhatsApp", "Facebook"])
-    motivo_ban = st.selectbox("Natureza da Penalidade", ["Software de Terceiros", "Atividade Incomum", "Diretrizes", "Spam"])
+# Campos de ID e Diagnóstico
+id_jogador = st.text_input("ID do Jogador (Ex: 12345678)", placeholder="Digite seu ID da conta")
+motivo_ff = st.selectbox("Qual o motivo do Ban?", ["Uso de Software não oficial (Regedit/Mod)", "Atividade Suspeita", "Reembolso Indevido", "Outros"])
+tempo_ban = st.selectbox("Há quanto tempo foi o banimento?", ["Menos de 3 meses", "Mais de 6 meses", "Ban antigo (1 ano+)"])
 
-with col2:
-    tempo_ban = st.selectbox("Tempo da Suspensão", ["Recente", "Intermediário", "Antigo"])
-    investimento = st.radio("Houve investimento financeiro?", ["Sim", "Não"])
+# Processador de Texto do Método
+texto_usuario = st.text_area("Descreva o que aconteceu (o app vai limpar o lado emocional):")
 
-# Campo de Entrada do Usuário
-st.subheader("📝 Relato do Ocorrido")
-texto_original = st.text_area("Descreva o que aconteceu (o sistema fará o ajuste técnico):", 
-                              placeholder="Ex: Tomei ban por usar regedit, achei injusto, por favor me ajuda.")
-
-# Botão de Processamento
-if st.button("Gerar Recurso Blindado"):
-    if texto_original:
-        # Lógica de substituição do seu método (Filtro Anti-Bot)
-        dicionario_estrategico = {
-            "injusto": "falso positivo técnico",
-            "injustiça": "inconsistência na detecção",
-            "por favor": "solicito revisão manual",
-            "me ajuda": "requer análise de conformidade",
-            "imploro": "solicito parecer técnico",
-            "fiz nada": "não identifico violações diretas nos logs",
-            "erro de vocês": "divergência sistêmica",
-            "quero minha conta": "restabelecimento do acesso"
-        }
+if st.button("Gerar Recurso para Garena"):
+    if texto_usuario and id_jogador:
+        # Substituições técnicas do seu método
+        recurso = texto_usuario.lower().replace("injusto", "falso positivo").replace("por favor", "solicito análise manual").replace("regedit", "arquivo de otimização de terceiros")
         
-        texto_ajustado = texto_original.lower()
-        for erro, termo_certo in dicionario_estrategico.items():
-            texto_ajustado = texto_ajustado.replace(erro, termo_certo)
-
-        # Exibição do Resultado Final
-        st.success("✅ Recurso Estratégico Gerado!")
+        st.success("✅ Recurso de Free Fire Gerado!")
         
-        template_final = f"""
-**Assunto: Solicitação de Revisão Técnica - [INSERIR SEU ID/USER]**
+        template_garena = f"""
+        **Assunto: Solicitação de Revisão de Suspensão - ID: {id_jogador}**
 
-Prezada Equipe de Suporte da {plataforma},
+        Prezada Equipe de Suporte Garena,
 
-Venho por meio desta solicitar a reavaliação da suspensão aplicada à minha conta. 
-Com base no Protocolo de Conformidade, identifiquei uma possível {texto_ajustado}. 
+        Venho solicitar a verificação técnica da suspensão aplicada ao ID {id_jogador}. 
+        Identifiquei que a detecção pode ter ocorrido por {recurso}.
 
-Considerando o histórico de {'investimento e ' if investimento == "Sim" else ''}fidelidade à plataforma, 
-solicito que este ticket seja encaminhado para uma análise humana dedicada.
+        Como jogador ativo e ciente das Regras de Conduta, solicito que o caso seja revisado por um analista humano para verificar a possibilidade de remoção da restrição ou conversão em suspensão temporária.
 
-Atenciosamente,
-[Seu Nome Completo]
+        Atenciosamente,
+        [Seu Nome]
         """
-        
-        st.code(template_final, language="text")
-        st.warning("⚠️ **Dica do Método:** Não envie mensagens repetitivas. Use os canais oficiais como o [Suporte da Garena](https://ffsuporte.garena.com) ou o [Centro de Ajuda do Instagram](https://help.instagram.com).")
+        st.code(template_garena)
+        st.warning("Envie este texto pelo [Suporte Oficial da Garena](https://ffsuporte.garena.com).")
     else:
-        st.error("Por favor, preencha o relato antes de gerar.")
-
-st.markdown("---")
-st.caption("Método de Desbanimento - Foco em Análise Técnica vs. Script Automatizado.")
+        st.error("Preencha seu ID e o relato para continuar.")
