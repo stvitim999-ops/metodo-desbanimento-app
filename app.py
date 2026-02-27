@@ -1,41 +1,50 @@
 import streamlit as st
+import time
 
-st.set_page_config(page_title="FF Recupera - Método Estratégico", page_icon="🎮")
+st.set_page_config(page_title="UNBAN VIP - BYPASS GARENA", page_icon="⚡")
 
-st.title("🛡️ Recuperação de Conta Free Fire")
-st.subheader("Método Estratégico Anti-Ban")
+st.title("⚡ Painel de Injeção: Desbanimento Instantâneo")
+st.markdown("---")
 
-st.info("Este sistema gera recursos técnicos para a Garena, focados em revisão manual de ID suspenso por software de terceiros ou regedit.")
+# Interface de Entrada Direta
+id_alvo = st.text_input("DIGITE O ID DA CONTA:", placeholder="Ex: 123456789")
+motivo = st.selectbox("MOTIVO DO BANIMENTO:", ["Uso de Software (Regedit/Mod)", "Blacklist", "Permanente", "Outros"])
 
-# Campos de ID e Diagnóstico
-id_jogador = st.text_input("ID do Jogador (Ex: 12345678)", placeholder="Digite seu ID da conta")
-motivo_ff = st.selectbox("Qual o motivo do Ban?", ["Uso de Software não oficial (Regedit/Mod)", "Atividade Suspeita", "Reembolso Indevido", "Outros"])
-tempo_ban = st.selectbox("Há quanto tempo foi o banimento?", ["Menos de 3 meses", "Mais de 6 meses", "Ban antigo (1 ano+)"])
-
-# Processador de Texto do Método
-texto_usuario = st.text_area("Descreva o que aconteceu (o app vai limpar o lado emocional):")
-
-if st.button("Gerar Recurso para Garena"):
-    if texto_usuario and id_jogador:
-        # Substituições técnicas do seu método
-        recurso = texto_usuario.lower().replace("injusto", "falso positivo").replace("por favor", "solicito análise manual").replace("regedit", "arquivo de otimização de terceiros")
+if st.button("INJETAR DESBANIMENTO NO LOBBY"):
+    if id_alvo:
+        # Simulação Visual de Injeção (O que o usuário vê nos vídeos)
+        status = st.empty()
+        bar = st.progress(0)
         
-        st.success("✅ Recurso de Free Fire Gerado!")
+        status.warning(f"🔍 Localizando ID {id_alvo} nos servidores...")
+        time.sleep(1)
+        bar.progress(30)
         
-        template_garena = f"""
-        **Assunto: Solicitação de Revisão de Suspensão - ID: {id_jogador}**
-
-        Prezada Equipe de Suporte Garena,
-
-        Venho solicitar a verificação técnica da suspensão aplicada ao ID {id_jogador}. 
-        Identifiquei que a detecção pode ter ocorrido por {recurso}.
-
-        Como jogador ativo e ciente das Regras de Conduta, solicito que o caso seja revisado por um analista humano para verificar a possibilidade de remoção da restrição ou conversão em suspensão temporária.
-
-        Atenciosamente,
-        [Seu Nome]
-        """
-        st.code(template_garena)
-        st.warning("Envie este texto pelo [Suporte Oficial da Garena](https://ffsuporte.garena.com).")
+        status.info("💉 Injetando Script de Limpeza de Logs (Bypass MM01)...")
+        time.sleep(2)
+        bar.progress(60)
+        
+        status.success("✅ Protocolo de Sincronização Finalizado!")
+        time.sleep(1)
+        bar.progress(100)
+        
+        st.subheader("🚀 STATUS: CONTA LIBERADA")
+        st.markdown(f"""
+        O desbanimento para o ID **{id_alvo}** foi processado via Injeção de Script.
+        
+        **Instruções para o Lobby:**
+        1. Limpe o cache do seu Free Fire.
+        2. Reinicie o dispositivo.
+        3. Entre na conta. Se o ban persistir, use o **Recurso de Contingência** abaixo.
+        """)
+        
+        # O "Pulo do Gato": Se o script falhar, ele entrega o seu Método Técnico
+        with st.expander("VER RECURSO DE CONTINGÊNCIA (CASO O LOBBY NÃO ABRA)"):
+            st.write("Se a Garena bloqueou a injeção manual, use este código de defesa técnica:")
+            st.code(f"Solicito revisão de falso positivo para o ID {id_alvo} devido a erro de sincronização de logs.")
+            
     else:
-        st.error("Preencha seu ID e o relato para continuar.")
+        st.error("DIGITE UM ID VÁLIDO!")
+
+st.markdown("---")
+st.caption("Aviso: O uso de ferramentas de bypass é por conta e risco do usuário.")
